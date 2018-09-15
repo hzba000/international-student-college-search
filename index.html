@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
-<!--Note: Sometimes countries are slow to load from API, give it a sec to populate search form-->
-<!--Issues: Tabbing results w/o aria, no results found, not passing axe-->
+<!--Note: Sometimes countries are slow to load from API(not often), give it a sec to populate search form-->
 <HTML lang="en">  
     
     <HEAD>  
@@ -27,23 +26,23 @@
                           <option value="" disabled selected>Select your option</option>
                         </select>
                         <span><button class="submit-button"> Submit Country </button></span>
-                        <span class="green-check-country"> </span>
+                        <span class="orange-check-country"> </span>
                     </fieldset>    
                 </form>
         
-            <div class="school-search-container">
+            <div class="school-search-container hidden">
                 <form id="js-search-form">
                     <fieldset>
                          <legend>Search for a school </legend>
                         <label for="js-search-box"></label>
                         <input type="text" name="js-search-box" id="js-search-box" placeholder="Search..." required>
                         <button type="submit">Submit School </button>
-                        <span class="green-check-school"> </span>
+                        <span class="orange-check-school"> </span>
                     </fieldset>
                 </form>
             </div>
 
-            <div class="chosen-result" aria-live="assertive"></div> 
+            <div class="chosen-result" aria-live="assertive"></div>
             <div class="js-results-holder" aria-live="polite"></div>
             
             </div>

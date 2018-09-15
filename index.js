@@ -1,5 +1,5 @@
+//Note: Sometimes(Not often) countries are slow to load from API, give it a sec to populate search form
 'use strict'
-//Note: Sometimes countries are slow to load from API, give it a sec to populate search form
 
 const Url="https://api.data.gov/ed/collegescorecard/v1/schools.json?";
 let globalCountry = undefined;
@@ -8,22 +8,23 @@ let globalCountry = undefined;
 function watchCountrySubmit(){
   $('.country-question-form').submit(function(event){
     event.preventDefault();
-    $(`.chosen-result`).html(''); //Clear Previous Selection
-    $(`.js-results-holder`).html(''); // Clear Previous Selection
+    $('.chosen-result').html(''); //Clear Previous Selection
+    $('.js-results-holder').html(''); // Clear Previous Selection
     watchSubmit();
 
-    //Handles Green Check Mark for Search Forms
-    $('.green-check-school').html('');
-    $('.green-check-country').html('').append("<img src=green_check_circle.png alt='green-check-country'>");
+    //Handles Orange Check Mark for Search Forms
+    $('.orange-check-school').html('');
+    $('.orange-check-country').html('').append("<img src=orange_mark.png alt='orange-check-country'>");
+    $('.school-search-container').addClass('fade-in').removeClass('hidden');
   })
 }
 
-//EVENT LISTENER FOR COLLEGE SEARCH FORM -- When user submits, store their query, and send query to getCollegesAPI() and watchSubmit()
+//EVENT LISTENER FOR COLLEGE SEARCH FORM
 function watchSubmit(){
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
-    $(`.chosen-result`).html(''); //Clear Previous Selection
-    $(`.js-results-holder`).html('')//Clear Previous Selection
+    $('.chosen-result').html(''); //Clear Previous Selection
+    $('.js-results-holder').html('')//Clear Previous Selection
     $('.results-header').removeClass('hidden'); //Reveal Header for Results
     const userSubmission = $('#js-search-box').val(); //Save user search term to userSubmission
     $('#js-search-box').val(''); //Clear Value after saving search term
@@ -31,11 +32,9 @@ function watchSubmit(){
     //Sets up Results Holder
     $('.js-results-holder').addClass('fade-in').css("background-color", "peachpuff").html('').append(
           `<h2>Select a college to view tuition in currency of ${globalCountry}</h2>`)  
-    //Coordinates Green Check Mark for Search Forms
-    $('.green-check-country').html('');
-    $('.green-check-school').html('').append("<img src=green_check_circle.png alt='green-check-school'>");
-    $('.invalid_entry').removeClass("hidden");
-
+    //Coordinates Orange Check Mark for Search Forms
+    $('.orange-check-country').html('');
+    $('.orange-check-school').html('').append("<img src=orange_mark.png alt='orange-check-school'>");
   });
 }
 
@@ -81,7 +80,9 @@ function loadColleges(data){
            <div>
               <p>Tuition in USD</p>
               <p> $${Math.trunc(college_tuition_out_state).toLocaleString()}</p>
-           </div><span><img src="fast_Forward.png" alt="right-arrow"></span>
+           </div>
+           
+           <span><img src="fast_Forward.png" alt="right-arrow"></span>
            
            <div>
               <p>Tuition in ${globalCurrencyId}</p>
@@ -89,10 +90,6 @@ function loadColleges(data){
            </div></br>`)
            window.scrollTo(0,0);
       })
-    }
-    if(data.results.length < 1){
-        $(`.js-results-holder`).append(`<p class="invalid_entry">No Results - Try Again</p>`);
-        // $('.invalid_entry').removeClass("hidden");
     }
   } 
 }
@@ -117,7 +114,7 @@ function getCountryApi(){
 function loadCountries(data){
   const results = data.results;
   for(let countryCode in results){
-    $(`#country-choices`).append(`<option value="${results[countryCode].name}"> ${results[countryCode].name} </option>`);
+    $('#country-choices').append(`<option value="${results[countryCode].name}"> ${results[countryCode].name} </option>`);
     countryIdArray.push(results[countryCode].name);
     currencyIdArray.push(results[countryCode].currencyId);
     symbolArray.push(results[countryCode].currencySymbol);
@@ -127,12 +124,12 @@ function loadCountries(data){
 
 //Saves user country choice
 function watchSubmitCountry(){
-  $(`.country-question-form`).submit(event => {
+  $('.country-question-form').submit(event => {
     event.preventDefault();
     const userSubmission =  $(`#country-choices`).val();
     const countryChoice = userSubmission;
     globalCountry = userSubmission;
-    $(`#country-choices`).val('');
+    $('#country-choices').val('');
     console.log(`Country: ${countryChoice}`);
     
 //Matches country choice to currency    
@@ -175,7 +172,6 @@ function testConversion(data){
 function handleFunctions(){
   getCountryApi();
   watchCountrySubmit();
-  getCollegesApi();
 }
 
 $(handleFunctions);

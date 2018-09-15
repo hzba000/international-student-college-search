@@ -16,12 +16,12 @@ header{
     text-align:center;
 }
 
-.green-check-country img{
+.orange-check-country img{
     height:25px;
     width: 25px;
 }
 
-.green-check-school img{
+.orange-check-school img{
     height:25px;
     width: 25px;
 }
@@ -47,7 +47,7 @@ fieldset {
 }
 
 legend {
-    color: blue;
+    color: darkorange;
     padding: 5px;
     font-size: 19px;
     font-weight: bold;
@@ -118,8 +118,6 @@ legend {
     font-size: 21px;
     margin-bottom: 10px;
 }
-
-
 
 /*Fade*/
 
