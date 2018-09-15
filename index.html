@@ -2,61 +2,56 @@
 
 <HTML lang="en">  
     <HEAD>  
+        <title> College Tuition Currency Converter</title>
         <link rel="stylesheet" type="text/css" href="index.css">
         <meta name="viewport" content="width=device-width">
-    </HEAD>
-
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Permanent+Marker|Rubik" rel="stylesheet">
     <BODY>
         <!-- <button type="submit" class="btn"> HIT ME </button> -->
         <header role="banner" aria-live="polite">
-                <h1>College Tuition Currency Converter</h1> 
-                
-                <div class="instructions">
-                    <p> Instructions</p>
-                    <p> Step 1: Choose a country </p>
-                    <p> Step 2: Search for a US College</p>
-                    <p> Step 3: Click on a college</p>
-                    <p> Step 4: View tuition in the currency of your chosen country</p> 
-                </div>   
+                <h1 id="top">College Tuition Currency Converter</h1> 
+                <h2>Pick a country <br> Pick a US college <br> See yearly tuition in currency of chosen country </h2>
         </header>
     
-    <main role="main" aria-live="polite">
-        <div class="input-div fade-in">
+    <div class="search-container fade-in">
+        <main role="main" aria-live="polite">
             <div>
              <form class="country-question-form">
-                    <fieldset>
-                        <legend> Choose your country </legend>
-                        <label class="country-question-label" for="country-choices"></label>
+                 <fieldset>
+                     <legend> Choose your country </legend>
+                     <label class="country-question-label" for="country-choices"></label>
                         <select name="country-choices" id="country-choices" required>
-                            <option value="" disabled selected>Select your option</option>
+                          <option value="" disabled selected>Select your option</option>
                         </select>
 
                         <span><button class="submit-button"> Submit Country </button></span>
-                    </fieldset>    
+                 </fieldset>    
                 </form>
+            </div>
+            <div class="country-selected">
+                <!--Tells you what country is selected-->
             </div>
     
         
             <div>
-                <form id="js-search-form">
-                    <fieldset>
+             <form id="js-search-form">
+                 <fieldset>
                      <legend>Search for your school </legend>
                      <label for="js-search-box"></label>
-                     <input type="text" name="js-search-box" class="js-search-box" placeholder="Search..." required>
+                     <input type="text" name="js-search-box" id="js-search-box" placeholder="Search..." required>
                      <button type="submit">Submit School</button>
-                    </fieldset>
-                </form>
+                 </fieldset>
+             </form>
+            
             </div>
         </div>
 
-        <div> <h2 class="results-header hidden"> </h2></div>
+        <!-- <div> <h2 class="results-header hidden"> STEP 3 - Choose a school </h2></div> -->
 
         <!-- <div class="flex-container fade-in"> -->
-
-            <div class="js-results-holder"></div>
-
-            <div class="chosen-result"></div>
-
+            <div class="chosen-result" aria-live="assertive"></div> 
+            <div class="js-results-holder" aria-live="polite"></div>
+            
         <!-- </div> -->
     </main>    
 
