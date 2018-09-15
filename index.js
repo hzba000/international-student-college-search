@@ -9,6 +9,7 @@ function watchCountrySubmit(){
     event.preventDefault();
     $(`.chosen-result`).html(''); //Clear Previous Selection
     $(`.js-results-holder`).html(''); // Clear Previous Selection
+    $(`.js-results-holder`).html(''); // Clear Previous Selection
     $('.college-search-container').removeClass('hidden'); //Make College Search Bar Appear  
     watchSubmit();
   })
@@ -19,7 +20,7 @@ function watchSubmit(){
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
     $(`.chosen-result`).html(''); //Clear Previous Selection
-    $(`.js-results-holder`).html(''); // Clear Previous Selection
+    $(`.js-results-holder`).html('')//Clear Previous Selection
     $('.results-header').removeClass('hidden');
     const userSubmission = $('.js-search-box').val();
     $('.js-search-box').val('');
@@ -63,14 +64,14 @@ function getCollegesApi(searchTerm){
       }
 
       else if(college_tuition_out_state === null){
-        $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
+        $(`<h3 class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</h3><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
         <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_in_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
         console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_in_state)} ${globalCurrencyId}`);
       }
 
 
       else{
-        $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_out_state).toLocaleString()} USD </p>
+        $(`<h3 class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</h3><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_out_state).toLocaleString()} USD </p>
         <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
         console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_out_state)} ${globalCurrencyId}`);
         

@@ -8,19 +8,19 @@
 
     <BODY>
         <!-- <button type="submit" class="btn"> HIT ME </button> -->
-        <header role="banner">
+        <header role="banner" aria-live="polite">
                 <h1>College Tuition Currency Converter</h1> 
                 <h2> Search for college tuition and convert it into the currencies of different countries</h2>
         </header>
     
-    <main role="main">
+    <main role="main" aria-live="polite">
         <div class="form-wrapper fade-in">
             <form class="country-question-form">
                 <fieldset>
                     <legend> Choose your country </legend>
                     <label class="country-question-label" for="country-choices"></label>
                     <select name="country-choices" id="country-choices" required>
-                        <!-- <option value="" disabled selected>Select your option</option> -->
+                        <option value="" disabled selected>Select your option</option>
                     </select>
 
                     <span><button class="submit-button"> Submit Country </button></span>
