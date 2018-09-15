@@ -1,65 +1,57 @@
 <!DOCTYPE HTML>
-
+<!--Note: Sometimes countries are slow to load from API, give it a sec to populate search form-->
 <HTML lang="en">  
+    
     <HEAD>  
         <title> College Tuition Currency Converter</title>
         <link rel="stylesheet" type="text/css" href="index.css">
         <meta name="viewport" content="width=device-width">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Permanent+Marker|Rubik" rel="stylesheet">
+    </HEAD>
+    
     <BODY>
-        <!-- <button type="submit" class="btn"> HIT ME </button> -->
         <header role="banner" aria-live="polite">
                 <h1 id="top">College Tuition Currency Converter</h1> 
                 <h2>Pick a country <br> Pick a US college <br> See yearly tuition in currency of chosen country </h2>
         </header>
-    
-    <div class="search-container fade-in">
+
         <main role="main" aria-live="polite">
-            <div>
-             <form class="country-question-form">
-                 <fieldset>
-                     <legend> Choose your country </legend>
-                     <label class="country-question-label" for="country-choices"></label>
+
+            <div class="search-container fade-in">
+                <form class="country-question-form">
+                    <fieldset>
+                        <legend> Choose your country </legend>
+                        <label class="country-question-label" for="country-choices"></label>
                         <select name="country-choices" id="country-choices" required>
                           <option value="" disabled selected>Select your option</option>
                         </select>
-
                         <span><button class="submit-button"> Submit Country </button></span>
                         <span class="green-check-country"> </span>
-                 </fieldset>    
+                    </fieldset>    
                 </form>
-            </div>
+            
 
     
         
-            <div>
-             <form id="js-search-form">
-                 <fieldset>
-                     <legend>Search for your school </legend>
-                     <label for="js-search-box"></label>
-                     <input type="text" name="js-search-box" id="js-search-box" placeholder="Search..." required>
-                     <button type="submit">Submit School </button>
-                     <span class="green-check-school"> </span>
-
-                 </fieldset>
-             </form>
-            
+            <div class="school-search-container">
+                <form id="js-search-form">
+                    <fieldset>
+                         <legend>Search for your school </legend>
+                        <label for="js-search-box"></label>
+                        <input type="text" name="js-search-box" id="js-search-box" placeholder="Search..." required>
+                        <button type="submit">Submit School </button>
+                        <span class="green-check-school"> </span>
+                    </fieldset>
+                </form>
             </div>
-        </div>
 
-        <!-- <div> <h2 class="results-header hidden"> STEP 3 - Choose a school </h2></div> -->
-
-        <!-- <div class="flex-container fade-in"> -->
             <div class="chosen-result" aria-live="assertive"></div> 
             <div class="js-results-holder" aria-live="polite"></div>
             
-        <!-- </div> -->
-    </main>    
+            </div>
+        </main>    
 
-        <!-- <div class="navigation-buttons hidden">
-            <button type="submit" class="btn"> Go Forward </button>
-            <button type="submit" class="backbtn"> Go Back </button>
-        </div> -->
+        <!--Javascript Links-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="index.js"></script>
     </BODY>
