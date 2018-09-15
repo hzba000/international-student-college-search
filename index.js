@@ -57,14 +57,15 @@ function getCollegesApi(searchTerm){
       else if(college_tuition === null){
         $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
         <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_in_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
-     console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_in_state)} ${globalCurrencyId}`);
+        console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_in_state)} ${globalCurrencyId}`);
       }
 
 
       else{
         $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition).toLocaleString()} USD </p>
         <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
-     console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition)} ${globalCurrencyId}`);
+        console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition)} ${globalCurrencyId}`);
+        
       }
 
       //Event Listener for apending school information
@@ -182,7 +183,9 @@ function backButton(searchTerm){
 
 //     console.log(data.results);
 // }
+//___________________________________ANIMATIONS_________________________________________________________________________
 
+// $("country-choices").delay(8000).animate({"opacity": "3"}, 700);
 //____________________________________________________________________________________________________________
 
 function handleFunctions(){
@@ -199,4 +202,5 @@ $(handleFunctions);
 // if(data.results.length < 1){
 //   $(`.js-results-holder`).append("<p>No more results!</p>");
 // }
+
 

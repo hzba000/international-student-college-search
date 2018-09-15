@@ -15,32 +15,34 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="index.js"></script>
 
-        <form class="country-question-form">
-            <fieldset>
-                <legend> Country Question Form </legend>
-                <label class="country-question-label" for="country-choices">What country are you from?</label>
-                <select name="country-choices" id="country-choices" required>
-                    <option value="" disabled selected>Select your option</option>
-                </select>
+        <div class="form-wrapper fade-in">
+            <form class="country-question-form">
+                <fieldset>
+                    <legend> STEP 1 - Choose your country </legend>
+                    <label class="country-question-label" for="country-choices"></label>
+                    <select name="country-choices" id="country-choices" required>
+                        <option value="" disabled selected>Select your option</option>
+                    </select>
 
-                <span><button class="submit-button"> Submit button </button></span>
-            </fieldset>    
-        </form>
+                    <span><button class="submit-button"> Submit Country </button></span>
+                </fieldset>    
+            </form>
+        </div>
     
         
-        <div class="college-search-container hidden">
+        <div class="college-search-container fade-in hidden">
             <form id="js-search-form">
                 <fieldset>
-                    <legend> School Search Box </legend>
-                    <label for="js-search-box">Search for a school</label>
-                    <input type="text" name="js-search-box" class="js-search-box" placeholder="Search...">
-                    <button type="submit">Submit</button>
+                    <legend> STEP 2 - Search for your school </legend>
+                    <label for="js-search-box"></label>
+                    <input type="text" name="js-search-box" class="js-search-box" placeholder="Search..." required>
+                    <button type="submit">Submit School</button>
                 </fieldset>
             </form>
             
         </div>
 
-        <div> <h2 class="results-header hidden"> Results </h2></div>
+        <div> <h2 class="results-header hidden"> STEP 3 - Choose a school </h2></div>
 
         <div class="flex-container">
              <div class="js-results-holder"></div>
