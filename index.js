@@ -2,6 +2,7 @@
 
 const Url="https://api.data.gov/ed/collegescorecard/v1/schools.json?";
 let counter = 0;
+let globalCountry = undefined;
 
 //EVENT LISTENER FOR COUNTRY SELECTION -- PROMPT COLLEGE SEARCH FORM
 function watchCountrySubmit(){
@@ -13,6 +14,9 @@ function watchCountrySubmit(){
     // $(`.js-results-holder`).html(''); // Clear Previous Selection
     $('.college-search-container').removeClass('hidden'); //Make College Search Bar Appear 
     watchSubmit();
+    $('.green-check-school').html('');
+    $('.green-check-country').html('');
+    $('.green-check-country').append("<img src=green_check_circle.png alt='green-check-country'>");
   })
 }
 
@@ -32,8 +36,11 @@ function watchSubmit(){
       $('.js-results-holder').addClass('fade-in');
       $('.js-results-holder').css("background-color", "peachpuff");
       $(`.js-results-holder`).html('');
-      $('.js-results-holder').append(`<h2>Select a college to view tuition information</h2>`)
-
+      $('.js-results-holder').append(`<h2>Select a college to view tuition in currency of ${globalCountry}</h2>`)
+      $('.green-check-country').html('');
+      $('.green-check-school').html('');
+      $('.green-check-school').append("<img src=green_check_circle.png alt='green-check-school'>");
+  
     });
 }
 //GET COLLEGES API() makes JSON call for data
@@ -58,9 +65,9 @@ function getCollegesApi(searchTerm){
       let college_tuition_out_state = data.results[`${i}`][`latest.cost.tuition.out_of_state`];
       let college_tuition_in_state = data.results[`${i}`][`latest.cost.tuition.in_state`];
       let college_url = data.results[`${i}`][`school.school_url`];
-      let college_zip = data.results[`${i}`][`school.zip`];
-      let college_state = data.results[`${i}`][`school.state`];
-      let college_city = data.results[`${i}`][`school.city`];
+      // let college_zip = data.results[`${i}`][`school.zip`];
+      // let college_state = data.results[`${i}`][`school.state`];
+      // let college_city = data.results[`${i}`][`school.city`];
 
     //Compare in state tuition and out of state tuition to see if returns null --> want to omit results that have no data
       if(college_tuition_out_state === null && college_tuition_in_state === null){
@@ -69,6 +76,7 @@ function getCollegesApi(searchTerm){
 
       else if(college_tuition_out_state === null){
         $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</h3></a>`).appendTo('.js-results-holder');
+        //IF NVDA is on, you can tab through results and open them with enter...if it is off, it only tabs through results and takes you to top
       }
 
 
@@ -128,6 +136,7 @@ function watchSubmitCountry(data){
     event.preventDefault();
     const userSubmission =  $(`#country-choices`).val();
     const countryChoice = userSubmission;
+    globalCountry = userSubmission;
     $(`#country-choices`).val('');
     console.log(`Country: ${countryChoice}`);
     
