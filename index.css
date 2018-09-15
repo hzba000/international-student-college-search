@@ -2,9 +2,12 @@
     box-sizing:border-box;
 }
 
-header{
+
+
+/* h1{
     text-align:center;
-}
+} */
+
 .hidden{
     display:none;
 }
@@ -31,16 +34,18 @@ legend {
 
 }
 
-.js-results-holder{
+.js-results-holder {
     position: relative;
-    /* overflow: auto; */
-    height: auto;
-    width: 400px;
+    overflow: auto;
+    /* height: 100vh; */
+    /* width: 400px; */
     margin-left: 2px;
-    padding: 12px;
+    padding: 140px;
     margin-top: 0px;
     left: 500px;
     bottom: 420px;
+    overflow-x:hidden;
+
 }
 
 .js-results-holder h2{
@@ -101,8 +106,8 @@ legend {
     width: 500px;
     background-color: lightgray;
     position: relative;
-    /* left: 1000px;
-    bottom: 820px; */
+    left: 1000px;
+    bottom: 820px;
     text-align:center;
 }
 
@@ -176,18 +181,18 @@ JQUERY: $("body h1").delay(1000).animate({"opacity": "1"}, 700);
 
 
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
     .js-results-holder {
-        position: static;
+        position: relative;
         margin-top: 20px;
-        /* overflow: auto; */
+        overflow-y: auto;
         height: auto;
-        /* width: 400px; */
-        /* margin-left: 2px; */
-        /* padding: 12px; */
+        width: 400px;
+        margin-left: 2px; 
+        padding: 12px;  */
         /* margin-top: 0px; */
-        /* left: 500px; */
-        /* bottom: 420px; */
+        /* left: 500px;
+        /* bottom: 420px;
     }
 
     .chosen-result {
