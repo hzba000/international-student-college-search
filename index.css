@@ -1,3 +1,7 @@
+*{
+    box-sizing:border-box;
+}
+
 .hidden{
     display:none;
 }
@@ -6,3 +10,36 @@ p{
     margin:0;
 }
 
+fieldset {
+    border: none;
+    display: inline-block;
+}
+
+legend {
+    color: black;
+    border: 1px black solid;
+    padding: 5px;
+}
+
+.js-results-holder{
+    position: relative;
+    overflow: auto;
+    height: 400px;
+    width: 400px;
+    margin-left: 2px;
+    padding: 12px;
+    margin-top: 0px;
+}
+
+.navigation-buttons{
+    margin-left: 2px;
+    padding: 12px;
+    margin-top:0px;
+}
+
+.results-header{
+    margin-bottom:0px;
+    margin-left: 2px;
+    padding: 12px;
+    margin-top: 0px;
+}

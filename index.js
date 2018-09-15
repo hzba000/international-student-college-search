@@ -1,3 +1,5 @@
+'use strict'
+
 const Url="https://api.data.gov/ed/collegescorecard/v1/schools.json?";
 let counter = 0;
 
@@ -5,9 +7,7 @@ let counter = 0;
 function watchCountrySubmit(){
   $('.country-question-form').submit(function(event){
     event.preventDefault();
-    $('.college-search-container').removeClass('hidden'); //Make College Search Bar Appear
-
-  
+    $('.college-search-container').removeClass('hidden'); //Make College Search Bar Appear  
     watchSubmit();
   })
 }
@@ -16,21 +16,23 @@ function watchCountrySubmit(){
 function watchSubmit(){
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
+    $('.results-header').removeClass('hidden');
     const userSubmission = $('.js-search-box').val();
     $('.js-search-box').val('');
       getCollegesApi(userSubmission);
       forwardButton(userSubmission);
       backButton(userSubmission);
       $('.navigation-buttons').removeClass('hidden'); //Make Navigation Buttons Appear
+
     });
 }
 //GET COLLEGES API() makes JSON call for data
 //LOAD COLLEGES() takes data and renders it to screen
 function getCollegesApi(searchTerm){
   
-  query = {
+  const query = {
         "school.name": `${searchTerm}`,
-        _fields: "school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state",
+        _fields: "school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,school.school_url",
         api_key: "8P336smWdRHaUwK6gjNbmGzeaoRDEqyIt16jEInQ",
         _page: `${counter}`,
         _per_page: "10"
@@ -41,11 +43,37 @@ function getCollegesApi(searchTerm){
   function loadColleges(data){
     // console.log(data.results);
     $(`.js-results-holder`).html('');
-    for(i=0; i<data.results.length; i++){
+
+    for(let i=0; i<data.results.length; i++){
       let college_tuition = data.results[`${i}`][`latest.cost.tuition.out_of_state`];
-      $(`<p> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition).toLocaleString()} USD </p><p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition).toLocaleString()} ${globalCurrencyId}</p></br>`).appendTo('.js-results-holder');
-      console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition)} ${globalCurrencyId}`);
+      let college_tuition_in_state = data.results[`${i}`][`latest.cost.tuition.in_state`];
+      let college_url = data.results[`${i}`][`school.school_url`];
+
+    //Compare in state tuition and out of state tuition to see if returns null --> want to omit results that have no data
+      if(college_tuition === null && college_tuition_in_state === null){
+        //Exclude Results
       }
+
+      else if(college_tuition === null){
+        $(`<p> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
+        <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_in_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
+     console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_in_state)} ${globalCurrencyId}`);
+      }
+
+
+      else{
+        $(`<p> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition).toLocaleString()} USD </p>
+        <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
+     console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition)} ${globalCurrencyId}`);
+      }
+
+
+
+      // $(`<p> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition).toLocaleString()} USD </p>
+      //    <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
+      // console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition)} ${globalCurrencyId}`);
+      }
+
  
 } 
 }
@@ -56,13 +84,13 @@ function getCollegesApi(searchTerm){
 const countryIdArray = [];
 const currencyIdArray = [];
 const symbolArray = [];
-let globalRate = 0;
-let globalCurrencyId = null;
-let globalSymbol = null;
+let globalRate = undefined;
+let globalCurrencyId = undefined;
+let globalSymbol = undefined;
 
 function getCountryApi(){
   const Url="https://free.currencyconverterapi.com/api/v6/countries"
-  query = {}
+  const query = {}
   $.getJSON(Url, query, loadCountries);
 }
 
@@ -82,10 +110,11 @@ function watchSubmitCountry(data){
     event.preventDefault();
     const userSubmission =  $(`#country-choices`).val();
     const countryChoice = userSubmission;
+    $(`#country-choices`).val('');
     console.log(`Country: ${countryChoice}`);
     
     function matchCurrencyId(){
-    for(i=0; i<countryIdArray.length; i++){
+    for(let i=0; i<countryIdArray.length; i++){
       if(userSubmission === countryIdArray[i]){
         globalCurrencyId = currencyIdArray[i];
         globalSymbol = symbolArray[i]; 
@@ -99,10 +128,10 @@ function watchSubmitCountry(data){
 
 //_________________________________________________________________________________________________________________________________________
 
-function getConverterApi(currencyIdValue, globalSymbolValue){
+function getConverterApi(currencyIdValue){
   const Url="https://free.currencyconverterapi.com/api/v6/convert"
 
-  query = {
+  const query = {
     q: `USD_${currencyIdValue}`,
     compact:"ultra"
   }
@@ -139,14 +168,14 @@ function backButton(searchTerm){
 }
 
 //Very similar to loadColleges(), renders it to screen
-function getCollegesByState(data){
-    $('.js-results-holder').html('');
-    for(i=0; i<data.results.length; i++){
-      $(`<p> ${data.results[`${i}`][`school.name`]} </p>`).appendTo('.js-results-holder');
-      }
+// function getCollegesByState(data){
+//     $('.js-results-holder').html('');
+//     for(let i=0; i<data.results.length; i++){
+//       $(`<p> ${data.results[`${i}`][`school.name`]} </p>`).appendTo('.js-results-holder');
+//       }
 
-    console.log(data.results);
-}
+//     console.log(data.results);
+// }
 
 //____________________________________________________________________________________________________________
 
@@ -160,4 +189,7 @@ function handleFunctions(){
 $(handleFunctions);
 
 
-
+// For when there are no results!
+// if(data.results.length < 1){
+//   $(`.js-results-holder`).append("<p>No more results!</p>");
+// }
