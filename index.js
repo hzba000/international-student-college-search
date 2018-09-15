@@ -1,7 +1,6 @@
 'use strict'
 //Note: Sometimes countries are slow to load from API, give it a sec to populate search form
 
-
 const Url="https://api.data.gov/ed/collegescorecard/v1/schools.json?";
 let globalCountry = undefined;
 
@@ -35,6 +34,8 @@ function watchSubmit(){
     //Coordinates Green Check Mark for Search Forms
     $('.green-check-country').html('');
     $('.green-check-school').html('').append("<img src=green_check_circle.png alt='green-check-school'>");
+    $('.invalid_entry').removeClass("hidden");
+
   });
 }
 
@@ -89,6 +90,10 @@ function loadColleges(data){
            window.scrollTo(0,0);
       })
     }
+    if(data.results.length < 1){
+        $(`.js-results-holder`).append(`<p class="invalid_entry">No Results - Try Again</p>`);
+        // $('.invalid_entry').removeClass("hidden");
+    }
   } 
 }
 
@@ -129,7 +134,7 @@ function watchSubmitCountry(){
     globalCountry = userSubmission;
     $(`#country-choices`).val('');
     console.log(`Country: ${countryChoice}`);
-
+    
 //Matches country choice to currency    
 function matchCurrencyId(){
     for(let i=0; i<countryIdArray.length; i++){
@@ -171,7 +176,6 @@ function handleFunctions(){
   getCountryApi();
   watchCountrySubmit();
   getCollegesApi();
-
 }
 
 $(handleFunctions);
