@@ -5,12 +5,13 @@ let counter = 0;
 
 //EVENT LISTENER FOR COUNTRY SELECTION -- PROMPT COLLEGE SEARCH FORM
 function watchCountrySubmit(){
-  $('.country-question-form').change(function(event){
+  $('.country-question-form').submit(function(event){
     event.preventDefault();
-    // $(`.chosen-result`).html(''); //Clear Previous Selection
+    $(`.chosen-result`).html(''); //Clear Previous Selection
+    $(`.js-results-holder`).html(''); // Clear Previous Selection
+
     // $(`.js-results-holder`).html(''); // Clear Previous Selection
-    // $(`.js-results-holder`).html(''); // Clear Previous Selection
-    $('.college-search-container').removeClass('hidden'); //Make College Search Bar Appear  
+    $('.college-search-container').removeClass('hidden'); //Make College Search Bar Appear 
     watchSubmit();
   })
 }
@@ -22,16 +23,16 @@ function watchSubmit(){
     $(`.chosen-result`).html(''); //Clear Previous Selection
     $(`.js-results-holder`).html('')//Clear Previous Selection
     $('.results-header').removeClass('hidden');
-    const userSubmission = $('.js-search-box').val();
-    $('.js-search-box').val('');
+    const userSubmission = $('#js-search-box').val();
+    $('#js-search-box').val('');
       getCollegesApi(userSubmission);
       // forwardButton(userSubmission);
       // backButton(userSubmission);
       $('.navigation-buttons').removeClass('hidden'); //Make Navigation Buttons Appear
       $('.js-results-holder').addClass('fade-in');
-      $('.js-results-holder').css("background-color", "lightgray");
+      $('.js-results-holder').css("background-color", "peachpuff");
       $(`.js-results-holder`).html('');
-      $('.js-results-holder').append(`<h2>Choose your result</h2>`)
+      $('.js-results-holder').append(`<h2>Select a college to view tuition information</h2>`)
 
     });
 }
@@ -41,7 +42,7 @@ function getCollegesApi(searchTerm){
   
   const query = {
         "school.name": `${searchTerm}`,
-        _fields: "school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,school.school_url",
+        _fields: "school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,school.school_url,school.city,school.state,school.zip",
         api_key: "8P336smWdRHaUwK6gjNbmGzeaoRDEqyIt16jEInQ",
         _page: `${counter}`,
         _per_page: "100"
@@ -57,6 +58,9 @@ function getCollegesApi(searchTerm){
       let college_tuition_out_state = data.results[`${i}`][`latest.cost.tuition.out_of_state`];
       let college_tuition_in_state = data.results[`${i}`][`latest.cost.tuition.in_state`];
       let college_url = data.results[`${i}`][`school.school_url`];
+      let college_zip = data.results[`${i}`][`school.zip`];
+      let college_state = data.results[`${i}`][`school.state`];
+      let college_city = data.results[`${i}`][`school.city`];
 
     //Compare in state tuition and out of state tuition to see if returns null --> want to omit results that have no data
       if(college_tuition_out_state === null && college_tuition_in_state === null){
@@ -64,16 +68,12 @@ function getCollegesApi(searchTerm){
       }
 
       else if(college_tuition_out_state === null){
-        $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
-        <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_in_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
-        console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_in_state)} ${globalCurrencyId}`);
+        $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</h3></a>`).appendTo('.js-results-holder');
       }
 
 
       else{
-        $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_out_state).toLocaleString()} USD </p>
-        <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
-        console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_out_state)} ${globalCurrencyId}`);
+        $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</h3></a>`).appendTo('.js-results-holder');
         
       }
 
@@ -81,8 +81,9 @@ function getCollegesApi(searchTerm){
       $(`.result_school_name${i}`).on('click', function(){
         $(`.chosen-result`).addClass('fade-in');
         $(`.chosen-result`).html('');
-        $(`.chosen-result`).append(`<h2>${data.results[`${i}`][`school.name`]}</h2><div><p>Tuition in USD</p><p> $${Math.trunc(college_tuition_out_state).toLocaleString()}</p></div><span><img src="fast_Forward.png" alt="right-arrow"></span>
+        $(`.chosen-result`).append(`<h2>${data.results[`${i}`][`school.name`]}<p>See more at - <a href="http://${college_url}" target="_blank">${college_url}</a></p></h2><div><p>Tuition in USD</p><p> $${Math.trunc(college_tuition_out_state).toLocaleString()}</p></div><span><img src="fast_Forward.png" alt="right-arrow"></span>
         <div><p>Tuition in ${globalCurrencyId}</p><p>${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()} </p></div></br>`)
+        window.scrollTo(0,0);
       })
 
 
