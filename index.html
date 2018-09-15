@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<HTML>  
+    <HEAD>  
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </HEAD>
+
+    <BODY>
+        <!-- <button type="submit" class="btn"> HIT ME </button> -->
+        <h1>College Tuition Currency Converter</h1> 
+        <h2> Search for college tuition and convert it into the currencies of different countries</h2>
+
+    
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="index.js"></script>
+
+        <form class="country-question-form">
+            <label class="country-question-label" for="country-choices">What country are you from?</label>
+              <select name="country-choices" id="country-choices" required>
+                    <option value="" disabled selected>Select your option</option>
+              </select>
+
+              <span><button class="submit-button"> Submit button </button></span>
+        </form>
+
+        <div class="college-search-container hidden">
+            <form id="js-search-form">
+                <label for="js-search-box">Search for a school</label>
+                <input type="text" name="js-search-box" class="js-search-box" placeholder="Search...">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        
+        <div class="js-results-holder"> 
+        </div>
+
+        <div class="navigation-buttons hidden">
+            <button type="submit" class="btn"> Go Forward </button>
+            <button type="submit" class="backbtn"> Go Back </button>
+        </div>
+
+    </BODY>
+
+</HTML>
