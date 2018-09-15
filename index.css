@@ -2,7 +2,7 @@
     box-sizing:border-box;
 }
 
-h1,h2{
+header{
     text-align:center;
 }
 .hidden{
@@ -23,9 +23,12 @@ fieldset {
 }
 
 legend {
-    color: black;
-    border: 1px black solid;
+    color: blue;
+    /* border: 1px black solid; */
     padding: 5px;
+    font-size: 19px;
+    font-weight: bold;
+
 }
 
 .js-results-holder{
@@ -38,8 +41,11 @@ legend {
     margin-top: 0px;
     left: 500px;
     bottom: 420px;
-    
+}
 
+.js-results-holder h2{
+    background-color: white;
+    color: blue;
 }
 
 .js-search-box{
@@ -85,18 +91,19 @@ legend {
     cursor:pointer;
 }
 
-.flex-container{
+/* .flex-container{
     display: flex;
     flex-direction: row;
-}
+} */
 
-.chosen-result{
+.chosen-result {
     height: 100%;
     width: 500px;
-    background-color: lightblue;
+    background-color: lightgray;
     position: relative;
-    left: 600px;
-    bottom: 440px;
+    left: 1000px;
+    bottom: 820px;
+    text-align:center;
 }
 
 /* .country-question-form{
@@ -104,6 +111,15 @@ legend {
     margin-right: 200px;
 
 } */
+
+.chosen-result div{
+    display:inline-block;
+    font-size: 30px;
+}
+
+.chosen-result img{
+    height:50px;
+}
 
 #country-choices{
     opacity: 1;
@@ -155,3 +171,45 @@ body h1 {
 }
 
 JQUERY: $("body h1").delay(1000).animate({"opacity": "1"}, 700);
+
+*/
+
+
+
+@media only screen and (max-width: 600px) {
+    .js-results-holder {
+        position: static;
+        margin-top: 20px;
+        /* overflow: auto; */
+        height: auto;
+        /* width: 400px; */
+        /* margin-left: 2px; */
+        /* padding: 12px; */
+        /* margin-top: 0px; */
+        /* left: 500px; */
+        /* bottom: 420px; */
+    }
+
+    .chosen-result {
+        height: 100%;
+        width: 400px;
+        background-color: lightblue;
+        position: static;
+        left: 1000px;
+        bottom: 820px;
+        margin-top: 20px;
+    }
+
+    header {
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        width: 400px;
+    }
+
+    .chosen-result div{
+        font-size:27px;
+    }
+
+
+}

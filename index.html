@@ -1,27 +1,26 @@
 <!DOCTYPE HTML>
 
-<HTML>  
+<HTML lang="en">  
     <HEAD>  
         <link rel="stylesheet" type="text/css" href="index.css">
+        <meta name="viewport" content="width=device-width">
     </HEAD>
 
     <BODY>
         <!-- <button type="submit" class="btn"> HIT ME </button> -->
-        <h1>College Tuition Currency Converter</h1> 
-        <h2> Search for college tuition and convert it into the currencies of different countries</h2>
-
+        <header role="banner">
+                <h1>College Tuition Currency Converter</h1> 
+                <h2> Search for college tuition and convert it into the currencies of different countries</h2>
+        </header>
     
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="index.js"></script>
-
+    <main role="main">
         <div class="form-wrapper fade-in">
             <form class="country-question-form">
                 <fieldset>
-                    <legend> STEP 1 - Choose your country </legend>
+                    <legend> Choose your country </legend>
                     <label class="country-question-label" for="country-choices"></label>
                     <select name="country-choices" id="country-choices" required>
-                        <option value="" disabled selected>Select your option</option>
+                        <!-- <option value="" disabled selected>Select your option</option> -->
                     </select>
 
                     <span><button class="submit-button"> Submit Country </button></span>
@@ -33,7 +32,7 @@
         <div class="college-search-container fade-in hidden">
             <form id="js-search-form">
                 <fieldset>
-                    <legend> STEP 2 - Search for your school </legend>
+                    <legend>Search for your school </legend>
                     <label for="js-search-box"></label>
                     <input type="text" name="js-search-box" class="js-search-box" placeholder="Search..." required>
                     <button type="submit">Submit School</button>
@@ -42,19 +41,20 @@
             
         </div>
 
-        <div> <h2 class="results-header hidden"> STEP 3 - Choose a school </h2></div>
+        <!-- <div> <h2 class="results-header hidden"> STEP 3 - Choose a school </h2></div> -->
 
-        <div class="flex-container">
+        <!-- <div class="flex-container fade-in"> -->
              <div class="js-results-holder"></div>
-             <div class="chosen-result"></div></div>
-        </div>
+             <div class="chosen-result"></div>
+        <!-- </div> -->
+    </main>    
 
-
-        <div class="navigation-buttons hidden">
+        <!-- <div class="navigation-buttons hidden">
             <button type="submit" class="btn"> Go Forward </button>
             <button type="submit" class="backbtn"> Go Back </button>
-        </div>
-
+        </div> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="index.js"></script>
     </BODY>
 
 </HTML>
