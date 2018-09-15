@@ -29,6 +29,7 @@ legend {
     margin-left: 2px;
     padding: 12px;
     margin-top: 0px;
+
 }
 
 .navigation-buttons{
@@ -42,4 +43,32 @@ legend {
     margin-left: 2px;
     padding: 12px;
     margin-top: 0px;
+}
+
+/* body {
+    background-image: url("background_bottom.gif");
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: bottom;
+} */
+
+.result_school_name{
+    font-weight: bold;
+}
+
+.result_school_name:hover{
+    /* font-size: 20px; */
+    color: red;
+    cursor:pointer;
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.chosen-result{
+    height: 100%;
+    width: 500px;
+    background-color: lightblue;
 }

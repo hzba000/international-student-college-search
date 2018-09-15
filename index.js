@@ -55,18 +55,24 @@ function getCollegesApi(searchTerm){
       }
 
       else if(college_tuition === null){
-        $(`<p> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
+        $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
         <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_in_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
      console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition_in_state)} ${globalCurrencyId}`);
       }
 
 
       else{
-        $(`<p> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition).toLocaleString()} USD </p>
+        $(`<p class="result_school_name result_school_name${i}"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition).toLocaleString()} USD </p>
         <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`).appendTo('.js-results-holder');
      console.log(`Converted tuition is: ${globalSymbol}${Math.trunc(globalRate * college_tuition)} ${globalCurrencyId}`);
       }
 
+      //Event Listener for apending school information
+      $(`.result_school_name${i}`).on('click', function(){
+        $(`.chosen-result`).html('');
+        $(`.chosen-result`).append(`<p class="result_school_name"> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition_in_state).toLocaleString()} USD </p>
+        <p>Converted tuition is: ${globalSymbol} ${Math.trunc(globalRate * college_tuition_in_state).toLocaleString()} ${globalCurrencyId}</p><p><a href="http://${college_url}" target="_blank">School Website</a></p></br>`)
+      })
 
 
       // $(`<p> ${data.results[`${i}`][`school.name`]}</p><p>Out-of-State College Tuition: $${Math.trunc(college_tuition).toLocaleString()} USD </p>
@@ -193,3 +199,4 @@ $(handleFunctions);
 // if(data.results.length < 1){
 //   $(`.js-results-holder`).append("<p>No more results!</p>");
 // }
+
