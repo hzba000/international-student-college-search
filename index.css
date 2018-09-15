@@ -33,8 +33,8 @@ legend {
 
 .js-results-holder{
     position: relative;
-    overflow: auto;
-    height: 400px;
+    /* overflow: auto; */
+    height: auto;
     width: 400px;
     margin-left: 2px;
     padding: 12px;
@@ -101,8 +101,8 @@ legend {
     width: 500px;
     background-color: lightgray;
     position: relative;
-    left: 1000px;
-    bottom: 820px;
+    /* left: 1000px;
+    bottom: 820px; */
     text-align:center;
 }
 
@@ -209,6 +209,49 @@ JQUERY: $("body h1").delay(1000).animate({"opacity": "1"}, 700);
 
     .chosen-result div{
         font-size:27px;
+    }
+
+
+}
+
+@media only screen and (max-width: 1024px){
+    .chosen-result {
+        height: 100%;
+        width: 500px;
+        background-color: lightgray;
+        position: relative;
+        left: 400px;
+        bottom: 400px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    header{
+        text-align: center;
+        position: relative;
+        left: 80px;
+    }
+}
+
+@media only screen and (max-width: 375px){
+    .chosen-result {
+        height: 100%;
+        width: 500px;
+        background-color: lightgray;
+        position: static;
+        left: 0px;
+        bottom: auto;
+        text-align: center;
+    }
+}
+
+
+@media only screen and (max-width: 1256px){
+    header {
+        text-align: center;
+        position: relative;
+        left: 100px;
     }
 
 
