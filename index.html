@@ -16,24 +16,32 @@
         <script src="index.js"></script>
 
         <form class="country-question-form">
-            <label class="country-question-label" for="country-choices">What country are you from?</label>
-              <select name="country-choices" id="country-choices" required>
+            <fieldset>
+                <legend> Country Question Form </legend>
+                <label class="country-question-label" for="country-choices">What country are you from?</label>
+                <select name="country-choices" id="country-choices" required>
                     <option value="" disabled selected>Select your option</option>
-              </select>
+                </select>
 
-              <span><button class="submit-button"> Submit button </button></span>
+                <span><button class="submit-button"> Submit button </button></span>
+            </fieldset>    
         </form>
-
+    
+        
         <div class="college-search-container hidden">
             <form id="js-search-form">
-                <label for="js-search-box">Search for a school</label>
-                <input type="text" name="js-search-box" class="js-search-box" placeholder="Search...">
-                <button type="submit">Submit</button>
+                <fieldset>
+                    <legend> School Search Box </legend>
+                    <label for="js-search-box">Search for a school</label>
+                    <input type="text" name="js-search-box" class="js-search-box" placeholder="Search...">
+                    <button type="submit">Submit</button>
+                </fieldset>
             </form>
+            
         </div>
 
-        
-        <div class="js-results-holder"> 
+        <div> <h2 class="results-header hidden"> Results </h2></div>
+        <div class="js-results-holder">
         </div>
 
         <div class="navigation-buttons hidden">
