@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<!--Note: Sometimes countries are slow to load from API, give it a sec to populate search form-->
+<!--Issues: Tabbing results w/o aria, no results found, not passing axe-->
+<HTML lang="en">  
+    
+    <HEAD>  
+        <title> College Tuition Currency Converter</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <meta name="viewport" content="width=device-width">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Permanent+Marker|Rubik" rel="stylesheet">
+    </HEAD>
+    
+    <BODY>
+        <header role="banner" aria-live="polite">
+                <h1 id="top">College Tuition Currency Converter</h1> 
+                <h2>Pick a country <br> Search and Select a US College <br> See yearly tuition in currency of chosen country </h2>
+        </header>
+
+        <main role="main" aria-live="polite">
+
+            <div class="search-container fade-in">
+                <form class="country-question-form">
+                    <fieldset>
+                        <legend> Choose a country </legend>
+                        <label class="country-question-label" for="country-choices"></label>
+                        <select name="country-choices" id="country-choices" required>
+                          <option value="" disabled selected>Select your option</option>
+                        </select>
+                        <span><button class="submit-button"> Submit Country </button></span>
+                        <span class="green-check-country"> </span>
+                    </fieldset>    
+                </form>
+        
+            <div class="school-search-container">
+                <form id="js-search-form">
+                    <fieldset>
+                         <legend>Search for a school </legend>
+                        <label for="js-search-box"></label>
+                        <input type="text" name="js-search-box" id="js-search-box" placeholder="Search..." required>
+                        <button type="submit">Submit School </button>
+                        <span class="green-check-school"> </span>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="chosen-result" aria-live="assertive"></div> 
+            <div class="js-results-holder" aria-live="polite"></div>
+            
+            </div>
+        </main>    
+
+        <!--Javascript Links-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="index.js"></script>
+    </BODY>
+
+</HTML>
