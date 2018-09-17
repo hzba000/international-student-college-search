@@ -14,7 +14,7 @@ https://hzba000.github.io/college_tuition_currency_converter_test/
 **Intended Audience**<br>
 <div>
    This app is intended for people living outside the United States that want to attend college in the US. They can view the tuition of 
-   colleges they are interested in their native currency.
+   colleges that interest them in their native currency.
 </div><br>
 
 **Technology Used**<br>
