@@ -12,7 +12,7 @@
     <BODY>
         <header role="banner" aria-live="polite">
                 <h1 id="top">College Tuition Currency Converter</h1> 
-                <h2>Pick a country <br> Search and Select a US College <br> See yearly tuition in currency of chosen country </h2>
+                <h2>Choose your country <br> Search and Select a US College <br> See yearly tuition in currency of chosen country </h2>
         </header>
 
         <main role="main" aria-live="polite">
@@ -20,7 +20,7 @@
             <div class="search-container fade-in">
                 <form class="country-question-form">
                     <fieldset>
-                        <legend> Choose a country </legend>
+                        <legend> Choose your country </legend>
                         <label class="country-question-label" for="country-choices"></label>
                         <select name="country-choices" id="country-choices" required>
                           <option value="" disabled selected>Select your option</option>
@@ -41,9 +41,13 @@
                     </fieldset>
                 </form>
             </div>
-
-            <div class="chosen-result" aria-live="assertive"></div>
-            <div class="js-results-holder" aria-live="polite"></div>
+            
+            <div class="flex-container">
+                <div class="chosen-result hidden" aria-live="assertive">                <div class="js-youtube-holder hidden" aria-live="polite"></div>
+            </div>
+                <div class="js-youtube-holder hidden" aria-live="polite"></div>
+                <div class="js-results-holder hidden" aria-live="polite"></div>
+            </div>
             
             </div>
         </main>    

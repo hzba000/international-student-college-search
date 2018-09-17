@@ -10,6 +10,7 @@ function watchCountrySubmit(){
     event.preventDefault();
     $('.chosen-result').html(''); //Clear Previous Selection
     $('.js-results-holder').html(''); // Clear Previous Selection
+    $('.js-youtube-holder').html(''); // Clear Previous Selection
     watchSubmit();
 
     //Handles Orange Check Mark for Search Forms
@@ -23,8 +24,10 @@ function watchCountrySubmit(){
 function watchSubmit(){
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
+    $('.js-results-holder').removeClass('hidden');
     $('.chosen-result').html(''); //Clear Previous Selection
-    $('.js-results-holder').html('')//Clear Previous Selection
+    $('.js-results-holder').html('');//Clear Previous Selection
+    $('.js-youtube-holder').html('');
     $('.results-header').removeClass('hidden'); //Reveal Header for Results
     const userSubmission = $('#js-search-box').val(); //Save user search term to userSubmission
     $('#js-search-box').val(''); //Clear Value after saving search term
@@ -35,7 +38,9 @@ function watchSubmit(){
     //Coordinates Orange Check Mark for Search Forms
     $('.orange-check-country').html('');
     $('.orange-check-school').html('').append("<img src=orange_mark.png alt='orange-check-school'>");
-  });
+    
+    // clear out the input
+ });
 }
 
 //GET COLLEGES API() makes JSON call for data
@@ -67,13 +72,14 @@ function loadColleges(data){
         $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder');
         //IF NVDA is on, you can tab through results and open them with enter...if it is off, it only tabs through results and takes you to top
       }
-
       else{
         $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder'); 
       }
 
       //Event Listener for apending CHOSEN school information
       $(`.result_school_name${i}`).on('click', function(){
+        $('.chosen-result').removeClass('hidden');
+        $('.js-youtube-holder').removeClass('hidden');
         $(`.chosen-result`).addClass('fade-in').html('').append(
           `<h2>${college_name}<p>See more at - <a href="http://${college_url}" target="_blank">${college_url}</a></p></h2>
            
@@ -89,6 +95,8 @@ function loadColleges(data){
               <p>${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()} </p>
            </div></br>`)
            window.scrollTo(0,0);
+           $('.js-youtube-holder').addClass('fade-in').html('');
+           getDataFromYoutubeApi(`${college_name}`, displayYoutubeSearchData); 
       })
     }
   } 
@@ -168,7 +176,44 @@ function testConversion(data){
 }
 
 //__________________________________________________________________________________________________________________________________________
+//Youtube Stuff
 
+const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
+
+function getDataFromYoutubeApi(searchTerm, callback) {
+  
+    const query = {
+    key: "AIzaSyDugJKdQUUz5eiD3aWn9_5pL8ybtaKDPno",
+    part: "snippet",
+    q: `${searchTerm} international students`,
+    maxResults: 1
+  }
+  $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
+}
+
+function renderResult(item) {
+  return `
+    <div class="result-container">
+        <div class="pic-container">
+            <p> <a href = "https://www.youtube.com/watch?v=${item.id.videoId}"><img src= "${item.snippet.thumbnails.medium.url}" alt="thumbnail"></a> </p>
+        </div>
+        <div class="description-container">
+            <p class="result-title"><a href = "https://www.youtube.com/watch?v=${item.id.videoId}"> ${item.snippet.title}</a> </p>
+            <p class="result-description"> ${item.snippet.description} </p>
+            <p> Looking for more? Check out this <a href = "https://www.youtube.com/channel/${item.snippet.channelId}">channel</a> 
+        </div>
+    </div>`
+}
+
+function displayYoutubeSearchData(data) {
+  const items = data.items.map((item, index) => renderResult(item));
+  $('.js-youtube-holder').append(items);
+  // $('.js-youtube-holder').append(data.pageInfo.totalResults);
+}
+
+
+
+//
 function handleFunctions(){
   getCountryApi();
   watchCountrySubmit();
