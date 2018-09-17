@@ -70,6 +70,7 @@ function loadColleges(data){
       }
       else if(college_tuition_out_state === null){
         $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder');
+        college_tuition_out_state = college_tuition_in_state;
         //IF NVDA is on, you can tab through results and open them with enter...if it is off, it only tabs through results and takes you to top
       }
       else{
