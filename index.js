@@ -8,9 +8,9 @@ let globalCountry = undefined;
 function watchCountrySubmit(){
   $('.country-question-form').submit(function(event){
     event.preventDefault();
-    $('.chosen-result').html(''); //Clear Previous Selection
-    $('.js-results-holder').html(''); // Clear Previous Selection
-    $('.js-youtube-holder').html(''); // Clear Previous Selection
+    $('.chosen-result').html('').addClass('hidden'); //Clear Previous Selection
+    $('.js-results-holder').html('').addClass('hidden'); // Clear Previous Selection
+    $('.js-youtube-holder').html('').addClass('hidden'); // Clear Previous Selection
     watchSubmit();
 
     //Handles Orange Check Mark for Search Forms
@@ -25,9 +25,9 @@ function watchSubmit(){
   $('#js-search-form').submit(function(event) {
     event.preventDefault();
     $('.js-results-holder').removeClass('hidden');
-    $('.chosen-result').html(''); //Clear Previous Selection
+    $('.chosen-result').html('').addClass('hidden'); //Clear Previous Selection
     $('.js-results-holder').html('');//Clear Previous Selection
-    $('.js-youtube-holder').html('');
+    $('.js-youtube-holder').html('').addClass('hidden');
     $('.results-header').removeClass('hidden'); //Reveal Header for Results
     const userSubmission = $('#js-search-box').val(); //Save user search term to userSubmission
     $('#js-search-box').val(''); //Clear Value after saving search term
@@ -72,16 +72,9 @@ function loadColleges(data){
         $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder');
         college_tuition_out_state = college_tuition_in_state;
         //IF NVDA is on, you can tab through results and open them with enter...if it is off, it only tabs through results and takes you to top
-      }
-      else{
-        $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder'); 
-      }
-
-      //Event Listener for apending CHOSEN school information
-      $(`.result_school_name${i}`).on('click', function(){
         $('.chosen-result').removeClass('hidden');
         $('.js-youtube-holder').removeClass('hidden');
-        $(`.chosen-result`).addClass('fade-in').html('').append(
+        $(`.chosen-result`).addClass('fade-in').append(
           `<h2>${college_name}<p>See more at - <a href="http://${college_url}" target="_blank">${college_url}</a></p></h2>
            
            <div>
@@ -98,7 +91,52 @@ function loadColleges(data){
            window.scrollTo(0,0);
            $('.js-youtube-holder').addClass('fade-in').html('');
            getDataFromYoutubeApi(`${college_name}`, displayYoutubeSearchData); 
-      })
+      }
+      else{
+        $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder'); 
+        $('.chosen-result').removeClass('hidden');
+        $('.js-youtube-holder').removeClass('hidden');
+        $(`.chosen-result`).addClass('fade-in').append(
+          `<h2>${college_name}<p>See more at - <a href="http://${college_url}" target="_blank">${college_url}</a></p></h2>
+           
+           <div>
+              <p>Tuition in USD</p>
+              <p> $${Math.trunc(college_tuition_out_state).toLocaleString()}</p>
+           </div>
+           
+           <span><img src="fast_Forward.png" alt="right-arrow"></span>
+           
+           <div>
+              <p>Tuition in ${globalCurrencyId}</p>
+              <p>${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()} </p>
+           </div></br>`)
+           window.scrollTo(0,0);
+           $('.js-youtube-holder').addClass('fade-in').html('');
+           getDataFromYoutubeApi(`${college_name}`, displayYoutubeSearchData); 
+      }
+
+      //Event Listener for apending CHOSEN school information
+      // $(`.result_school_name${i}`).on('click', function(){
+        // $('.chosen-result').removeClass('hidden');
+        // $('.js-youtube-holder').removeClass('hidden');
+        // $(`.chosen-result`).addClass('fade-in').html('').append(
+        //   `<h2>${college_name}<p>See more at - <a href="http://${college_url}" target="_blank">${college_url}</a></p></h2>
+           
+        //    <div>
+        //       <p>Tuition in USD</p>
+        //       <p> $${Math.trunc(college_tuition_out_state).toLocaleString()}</p>
+        //    </div>
+           
+        //    <span><img src="fast_Forward.png" alt="right-arrow"></span>
+           
+        //    <div>
+        //       <p>Tuition in ${globalCurrencyId}</p>
+        //       <p>${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()} </p>
+        //    </div></br>`)
+        //    window.scrollTo(0,0);
+        //    $('.js-youtube-holder').addClass('fade-in').html('');
+        //    getDataFromYoutubeApi(`${college_name}`, displayYoutubeSearchData); 
+      // })
     }
   } 
 }
