@@ -11,7 +11,7 @@ function watchCountrySubmit(){
     $('.chosen-result').html('').addClass('hidden'); //Clear Previous Selection
     $('.js-results-holder').html('').addClass('hidden'); // Clear Previous Selection
     $('.js-youtube-holder').html('').addClass('hidden'); // Clear Previous Selection
-    watchSubmit();
+    // watchSubmit();
 
     //Handles Orange Check Mark for Search Forms
     $('.orange-check-school').html('');
@@ -102,12 +102,10 @@ function loadColleges(data){
 
       })
     }
-    console.log(data.results.length)
 
     // $('.submit-school-button').on('click', function(event){
       if(data.results.length < 1){
-        $('.js-results-holder').append("<p>NO RESULTS!</p>");
-        console.log(data.results.length)
+        $('.js-results-holder').append("<p class='no-results'>NO RESULTS!</p>");
       }
     // })
  
@@ -235,6 +233,7 @@ function displayYoutubeSearchData(data) {
 function handleFunctions(){
   getCountryApi();
   watchCountrySubmit();
+  watchSubmit();
 }
 
 $(handleFunctions);
