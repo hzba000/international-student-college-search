@@ -1,3 +1,12 @@
+/* #loading {
+    position: absolute; width: 100%; height: 100%; background: url('spinner.gif') no-repeat center center;
+} */
+
+.no-results{
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .js-youtube-holder{
     height: 100%;
     width: 500px;
@@ -47,7 +56,9 @@ body{
 
 header{
     text-align:center;
+    /* margin-bottom:1000px; */
 }
+
 
 .orange-check-country img{
     height:25px;
@@ -188,6 +199,8 @@ legend {
 	}
 }
 
+
+ 
 /*Buttons*/
 
 button{
@@ -218,7 +231,8 @@ button{
 
 /*Media Queries*/
 
-@media only screen and (max-width: 360px) {
+
+@media only screen and (max-width:768px){
     .chosen-result p{
         font-size: 23px;
     }
@@ -232,6 +246,7 @@ button{
         bottom: 100px;
         margin-top:80px;
         width: auto;
+        margin:10px;
     }
 
     fieldset{
@@ -241,6 +256,11 @@ button{
     .flex-container{
         display:flex;
         flex-direction:column;
+        padding:5px;
+    }
+
+    .js-youtube-holder img{
+        width:250px;
     }
 
     .js-youtube-holder{
@@ -252,19 +272,45 @@ button{
         left: 750px;
         bottom: 100px;
         margin-top:80px;
-        margin-bottom:80px;
+        margin-bottom:30px;
+        margin:10px;
         /* border: 1px solid;
         padding: 10px;
         box-shadow: 5px 10px 8px 10px red; */
     }
+
+    .js-results-holder{
+        margin:10px;
+    }
 }
 
+/*ScrollBar*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
 
-@media only screen and (max-width: 415px) {
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/*Media Queries*/
+
+@media only screen and (max-width:1024px){
     .chosen-result p{
-        font-size: 20px;
+        font-size: 23px;
     }
-
     .chosen-result{
         margin-bottom:0px;
         height: 100%;
@@ -275,51 +321,54 @@ button{
         bottom: 100px;
         margin-top:80px;
         width: auto;
+        margin:10px;
     }
 
     fieldset{
         left: 0px;
     }
-}
 
-@media only screen and (max-width:320px){
-    header{
-        position: relative;
-        left: 40px;
+    .flex-container{
+        display:flex;
+        flex-direction:column;
+        padding:5px;
     }
 
-    .chosen-result p{
-        font-size: 23px;
+    .flex-container-inner{
+        max-width: 720px;
     }
 
-    .chosen-result {
-        margin-bottom: 0px;
+    .js-youtube-holder img{
+        width:250px;
+    }
+
+    .js-youtube-holder{
         height: 100%;
+        width: auto;
         background-color: peachpuff;
         position: static;
         text-align: center;
         left: 750px;
         bottom: 100px;
-        margin-top: 80px;
-        width: 400px;
+        margin-top:80px;
+        margin-bottom:30px;
+        margin:10px;
+        flex:1
+        /* border: 1px solid;
+        padding: 10px;
+        box-shadow: 5px 10px 8px 10px red; */
     }
 
-    .js-results-holder {
-        overflow: auto;
-        width: 400px;
-        margin-top: 50px;
+    .js-results-holder{
+        margin:10px;
     }
-}
 
-@media only screen and (max-width:768px){
     .chosen-result{
-        width:auto;
+        flex:1;
     }
-}
 
-@media only screen and (max-width:1024px){
-    .chosen-result{
-        width:auto;
+    #js-search-form{
+        margin-bottom: 50px;
     }
 }
 

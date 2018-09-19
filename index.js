@@ -61,7 +61,7 @@ function loadColleges(data){
       let college_tuition_in_state = data.results[`${i}`][`latest.cost.tuition.in_state`];
       let college_url = data.results[`${i}`][`school.school_url`];
       let college_name = data.results[`${i}`][`school.name`];
-
+      
 
     //Compare in state tuition and out of state tuition to see if returns null --> want to omit results that have no data
       if(college_tuition_out_state === null && college_tuition_in_state === null){
@@ -105,7 +105,7 @@ function loadColleges(data){
 
     // $('.submit-school-button').on('click', function(event){
       if(data.results.length < 1){
-        $('.js-results-holder').append("<p class='no-results'>NO RESULTS!</p>");
+        $('.js-results-holder').append("<p class='no-results'>No results - Try again</p>");
       }
     // })
  
@@ -115,7 +115,7 @@ function loadColleges(data){
 //___________________________________________________________________________
 // CURRENCY CONVERTER STARTS HERE - Takes in country, matches currency, converts tuition
 
-const countryIdArray = [];
+let countryIdArray = [];
 const currencyIdArray = [];
 const symbolArray = [];
 let globalRate = undefined;
@@ -131,12 +131,20 @@ function getCountryApi(){
 
 function loadCountries(data){
   const results = data.results;
+  console.log(results);
   for(let countryCode in results){
-    $('#country-choices').append(`<option value="${results[countryCode].name}"> ${results[countryCode].name} </option>`);
+    // $('#country-choices').append(`<option value="${results[countryCode].name}"> ${results[countryCode].name} </option>`);
     countryIdArray.push(results[countryCode].name);
     currencyIdArray.push(results[countryCode].currencyId);
     symbolArray.push(results[countryCode].currencySymbol);
-  }
+  } 
+    countryIdArray = countryIdArray.sort();
+    console.log(countryIdArray);
+  
+  for(let i=0; i<countryIdArray.length; i++){
+    $('#country-choices').append(`<option value="${countryIdArray[i]}"> ${countryIdArray[i]} </option>`);
+  } //Also changed const to let for countryIdArray
+
     watchSubmitCountry(data);
 }
 
@@ -218,7 +226,7 @@ function renderResult(item) {
 function displayYoutubeSearchData(data) {
   const items = data.items.map((item, index) => renderResult(item));
   if(data.items < 1){
-  $('.js-youtube-holder').append("NO RESULTS!");
+  $('.js-youtube-holder').append("<h2 class='no-results'>No results - Try again</h2>");
   // $('.js-youtube-holder').append(data.pageInfo.totalResults);
   }
 
@@ -237,4 +245,8 @@ function handleFunctions(){
 }
 
 $(handleFunctions);
+
+// $('.js-youtube-holder').ready(function() {
+//   $('#loading').hide();
+// });
 
