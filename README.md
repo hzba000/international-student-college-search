@@ -9,6 +9,7 @@ https://hzba000.github.io/college_tuition_currency_converter_test/
   This app allows users to search for yearly US college tuition in the currencies of different countries.<br>  
   The user chooses a country, searches for a school and makes their selection.<br> 
   The app finds the tuition of that school, and converts it into the currency of the user’s chosen country.
+  It also provides some other useful information for foreign students looking to attend college in the US.
 </div><br>
 
 **Intended Audience**<br>
@@ -27,13 +28,13 @@ https://hzba000.github.io/college_tuition_currency_converter_test/
  
  **Screenshots**<br>
  <p> Landing page: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_app/blob/master/Screenshots/landing_page.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/landing_page.png">
  
  <p> Select a country: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_app/blob/master/Screenshots/select_country.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/choose_country.png">
  
  <p> Search and select a school: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_app/blob/master/Screenshots/select_school.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/search_select_school.png">
  
  <p> View chosen school’s tuition in currency of chosen country: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_app/blob/master/Screenshots/view_conversion.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/see_results.png">
