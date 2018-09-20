@@ -12,17 +12,21 @@
     <BODY>
         <header role="banner" aria-live="polite">
                 <h1 id="top">College Tuition Currency Converter</h1> 
-                <h2>Pick a country <br> Search and Select a US College <br> See yearly tuition in currency of chosen country </h2>
+                <div class="instructions"> 
+                    <h3>Choose your country</h3>
+                    <h3>Search and Select a US College</h3>
+                    <h3>See yearly tuition in currency of chosen country</h3>
+                </div>
         </header>
 
         <main role="main" aria-live="polite">
-
+            
             <div class="search-container fade-in">
                 <form class="country-question-form">
                     <fieldset>
-                        <legend> Choose a country </legend>
+                        <legend> Choose your country </legend>
                         <label class="country-question-label" for="country-choices"></label>
-                        <select name="country-choices" id="country-choices" required>
+                        <select name="country-choices" id="country-choices" required onchange="watchCountrySubmit">
                           <option value="" disabled selected>Select your option</option>
                         </select>
                         <span><button class="submit-button"> Submit Country </button></span>
@@ -36,14 +40,21 @@
                          <legend>Search for a school </legend>
                         <label for="js-search-box"></label>
                         <input type="text" name="js-search-box" id="js-search-box" placeholder="Search..." required>
-                        <button type="submit">Submit School </button>
+                        <button type="submit" class="submit-school-button">Submit School </button>
                         <span class="orange-check-school"> </span>
                     </fieldset>
                 </form>
             </div>
-
-            <div class="chosen-result" aria-live="assertive"></div>
-            <div class="js-results-holder" aria-live="polite"></div>
+            
+            <div class="flex-container">
+                <div class="flex-container-inner">
+                    <div class="chosen-result hidden" aria-live="assertive"></div>
+                    <div class="js-youtube-holder hidden" aria-live="assertive"></div>
+                    <div class="js-pop-info hidden"></div>
+                    <div class="js-poprace-info hidden"></div>
+                </div>
+                <div class="js-results-holder hidden" aria-live="polite"></div>
+            </div>
             
             </div>
         </main>    

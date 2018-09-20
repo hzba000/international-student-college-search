@@ -5,7 +5,7 @@
     font-family: 'Fira Sans', sans-serif;
 }
 
-body{
+ body{
     background-image:url(background_bottom.gif);
     background-position: bottom;
     background-repeat: repeat-x;
@@ -14,6 +14,156 @@ body{
 
 header{
     text-align:center;
+}
+
+.flex-container{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+
+.flex-container-inner{
+    display:flex;
+    flex-direction:column;
+}
+
+#js-search-box{
+    width:338px;
+    margin-bottom: 10px;
+}
+
+.search-container{
+    position:relative;
+    bottom:50px;
+}
+
+#country-choices{
+    opacity: 1;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.js-pop-info{
+    height: 100%;
+    width: 500px;
+    background-color: peachpuff;
+    position: static;
+    text-align: center;
+    left: 750px;
+    bottom: 100px;
+    margin-bottom:30px;
+    margin-right: 30px;
+    flex:1;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 10px orangered;
+    max-height: 350px;
+}
+
+.js-poprace-info{
+    height: 100%;
+    width: 500px;
+    background-color: peachpuff;
+    position: static;
+    text-align: center;
+    left: 750px;
+    bottom: 100px;
+    margin-bottom:80px;
+    margin-right: 30px;
+    flex:1;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 10px orangered;
+    max-height: 350px;
+}
+
+.no-results{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.js-youtube-holder{
+    height: 100%;
+    width: 500px;
+    background-color: peachpuff;
+    position: static;
+    text-align: center;
+    left: 750px;
+    bottom: 100px;
+    margin-bottom:30px;
+    margin-right: 30px;
+    flex:1;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 10px orangered;
+    max-height: 350px;
+}
+
+.js-results-holder{
+    overflow: auto;
+    margin-top: 80px;
+    flex:1;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 10px orangered;
+    max-width:700px;
+    max-height:1300px;
+}
+
+.js-results-holder h2{
+    background-color: white;
+    color: blue;
+    text-align:center;
+}
+
+.chosen-result {
+    height: 100%;
+    width: 500px;
+    background-color: peachpuff;
+    position: static;
+    text-align: center;
+    left: 750px;
+    bottom: 100px;
+    margin-top:80px;
+    margin-bottom:30px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px 8px 10px orangered;
+    flex:1;
+    max-height: 350px;
+}
+
+.results-header{
+    margin-bottom:0px;
+    margin-left: 2px;
+    padding: 12px;
+    margin-top: 0px;
+    left: 60px;
+    bottom: 405px;
+    position: relative;
+}
+
+.result_school_name{
+    font-weight: bold;
+}
+
+.result_school_name:hover{
+    color: orangered;
+    cursor:pointer;
+}
+
+.chosen-result div{
+    display:inline-block;
+    font-size: 30px;
+}
+
+.chosen-result img{
+    height:50px;
+}
+
+.chosen-result p{
+    font-size:23px;
+    font-weight:bold;
 }
 
 .orange-check-country img{
@@ -53,72 +203,6 @@ legend {
     font-weight: bold;
 }
 
-.js-results-holder {
-    overflow: auto;
-    margin-top: 50px;
-}
-
-.js-results-holder h2{
-    background-color: white;
-    color: blue;
-}
-
-#js-search-box{
-    width:338px;
-    margin-bottom: 10px;
-}
-
-.results-header{
-    margin-bottom:0px;
-    margin-left: 2px;
-    padding: 12px;
-    margin-top: 0px;
-    left: 60px;
-    bottom: 405px;
-    position: relative;
-}
-
-.search-container{
-    position:relative;
-    bottom:50px;
-}
-
-.result_school_name{
-    font-weight: bold;
-}
-
-.result_school_name:hover{
-    color: red;
-    cursor:pointer;
-}
-
-.chosen-result {
-    height: 100%;
-    width: 800px;
-    background-color: peachpuff;
-    position: static;
-    text-align: center;
-    left: 750px;
-    bottom: 100px;
-    margin-top:80px;
-    margin-bottom:80px;
-}
-
-.chosen-result div{
-    display:inline-block;
-    font-size: 30px;
-}
-
-.chosen-result img{
-    height:50px;
-}
-
-#country-choices{
-    opacity: 1;
-    font-size: 21px;
-    margin-bottom: 10px;
-}
-
 /*Fade*/
 
 .fade-in {
@@ -138,6 +222,8 @@ legend {
 	}
 }
 
+
+ 
 /*Buttons*/
 
 button{
@@ -163,82 +249,213 @@ button{
   }
   
   button:hover{
-    background-color: red;
+    background-color: orangered;
   }
 
 /*Media Queries*/
 
-@media only screen and (max-width: 360px) {
-    .chosen-result p{
-        font-size: 23px;
-    }
-    .chosen-result{
-        margin-bottom:0px;
-        height: 100%;
-        background-color: peachpuff;
-        position: static;
-        text-align: center;
-        left: 750px;
-        bottom: 100px;
-        margin-top:80px;
-        width: auto;
-    }
-
-    fieldset{
-        left: 0px;
-    }
-}
-
-
-@media only screen and (max-width: 415px) {
-    .chosen-result p{
-        font-size: 20px;
-    }
-
-    .chosen-result{
-        margin-bottom:0px;
-        height: 100%;
-        background-color: peachpuff;
-        position: static;
-        text-align: center;
-        left: 750px;
-        bottom: 100px;
-        margin-top:80px;
-        width: auto;
-    }
-
-    fieldset{
-        left: 0px;
-    }
-}
-
-@media only screen and (max-width:320px){
+@media only screen and (max-width: 320px){
     header{
         position: relative;
-        left: 40px;
+        left:30px;
     }
 
     .chosen-result p{
-        font-size: 23px;
+        font-size:23px;   
     }
+}
 
-    .chosen-result {
-        margin-bottom: 0px;
+
+@media only screen and (max-width:768px){
+    
+    .js-pop-info{
+        margin-bottom:0px;
         height: 100%;
         background-color: peachpuff;
         position: static;
         text-align: center;
         left: 750px;
         bottom: 100px;
-        margin-top: 80px;
-        width: 400px;
+        margin-top:80px;
+        width: auto;
+        margin:10px;
     }
 
-    .js-results-holder {
-        overflow: auto;
-        width: 400px;
-        margin-top: 50px;
+    .js-poprace-info{
+        margin-bottom:0px;
+        height: 100%;
+        background-color: peachpuff;
+        position: static;
+        text-align: center;
+        left: 750px;
+        bottom: 100px;
+        margin-top:80px;
+        width: auto;
+        margin:10px;
     }
+    
+
+    .chosen-result p{
+        font-size: 23px;
+        font-weight:bold;
+    }
+    .chosen-result{
+        margin-bottom:0px;
+        height: 100%;
+        background-color: peachpuff;
+        position: static;
+        text-align: center;
+        left: 750px;
+        bottom: 100px;
+        margin-top:80px;
+        width: auto;
+        margin:10px;
+    }
+
+    fieldset{
+        left: 0px;
+    }
+
+    .flex-container{
+        display:flex;
+        flex-direction:column;
+        padding:5px;
+    }
+
+    .js-youtube-holder img{
+        width:250px;
+    }
+
+    .js-youtube-holder{
+        height: 100%;
+        width: auto;
+        background-color: peachpuff;
+        position: static;
+        text-align: center;
+        left: 750px;
+        bottom: 100px;
+        margin-top:80px;
+        margin-bottom:30px;
+        margin:10px;
+    }
+
+    .js-results-holder{
+        margin:10px;
+    }
+    
 }
 
+/*ScrollBar*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/*Media Queries*/
+
+@media only screen and (max-width:1025px){
+
+    .js-pop-info{
+        margin-bottom:0px;
+        height: 100%;
+        background-color: peachpuff;
+        position: static;
+        text-align: center;
+        left: 750px;
+        bottom: 100px;
+        margin-top:80px;
+        width: auto;
+        margin:10px;
+    }
+
+    .js-poprace-info{
+        margin-bottom:0px;
+        height: 100%;
+        background-color: peachpuff;
+        position: static;
+        text-align: center;
+        left: 750px;
+        bottom: 100px;
+        margin-top:80px;
+        width: auto;
+        margin:10px;
+    }
+
+    .chosen-result p{
+        font-size: 23px;
+        font-weight:bold;
+
+    }
+    .chosen-result{
+        margin-bottom:0px;
+        height: 100%;
+        background-color: peachpuff;
+        position: static;
+        text-align: center;
+        left: 750px;
+        bottom: 100px;
+        margin-top:80px;
+        width: auto;
+        margin:10px;
+    }
+
+    fieldset{
+        left: 0px;
+    }
+
+    .flex-container{
+        display:flex;
+        flex-direction:column;
+        padding:5px;
+    }
+
+    .flex-container-inner{
+        max-width: 720px;
+    }
+
+    .js-youtube-holder img{
+        width:250px;
+    }
+
+    .js-youtube-holder{
+        height: 100%;
+        width: auto;
+        background-color: peachpuff;
+        position: static;
+        text-align: center;
+        left: 750px;
+        bottom: 100px;
+        margin-top:80px;
+        margin-bottom:30px;
+        margin:10px;
+        flex:1
+    }
+
+    .js-results-holder{
+        margin:10px;
+    }
+
+    .chosen-result{
+        flex:1;
+    }
+
+    #js-search-form{
+        margin-bottom: 50px;
+    }
+}
 
