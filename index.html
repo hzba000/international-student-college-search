@@ -12,8 +12,12 @@
     <BODY>
         <header role="banner" aria-live="polite">
                 <h1 id="top">College Tuition Currency Converter</h1> 
-                <h2>Choose your country <br> Search and Select a US College <br> See yearly tuition in currency of chosen country </h2>
-        </header>
+               <div class="instructions"> 
+                    <h3>Choose your country</h3>
+                    <h3>Search and Select a US College</h3>
+                    <h3>See yearly tuition in currency of chosen country</h3>
+                </div>
+            </header>
 
         <main role="main" aria-live="polite">
 
@@ -46,9 +50,11 @@
             </div>
             
             <div class="flex-container">
-                <div class="flex-container-inner" aria-live="assertive">
-                    <div class="chosen-result hidden"></div>
-                    <div class="js-youtube-holder hidden"></div>
+                <div class="flex-container-inner">
+                    <div class="chosen-result hidden" aria-live="assertive"></div>
+                    <div class="js-youtube-holder hidden" aria-live="assertive"></div>
+                    <div class="js-pop-info hidden"></div>
+                    <div class="js-poprace-info hidden"></div>
                 </div>
                 <div class="js-results-holder hidden" aria-live="polite"></div>
             </div>

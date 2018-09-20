@@ -11,6 +11,8 @@ function watchCountrySubmit(){
     $('.chosen-result').html('').addClass('hidden'); //Clear Previous Selection
     $('.js-results-holder').html('').addClass('hidden'); // Clear Previous Selection
     $('.js-youtube-holder').html('').addClass('hidden'); // Clear Previous Selection
+    $('.js-pop-info').html('').addClass('hidden'); // Clear Previous Selection
+    $('.js-poprace-info').html('').addClass('hidden'); // Clear Previous Selection
     // watchSubmit();
 
     //Handles Orange Check Mark for Search Forms
@@ -26,6 +28,8 @@ function watchSubmit(){
     event.preventDefault();
     $('.js-results-holder').removeClass('hidden');
     $('.chosen-result').html('').addClass('hidden'); //Clear Previous Selection
+    $('.js-pop-info').html('').addClass('hidden'); // Clear Previous Selection
+    $('.js-poprace-info').html('').addClass('hidden'); // Clear Previous Selection
     $('.js-results-holder').html('');//Clear Previous Selection
     $('.js-youtube-holder').html('').addClass('hidden');
     $('.results-header').removeClass('hidden'); //Reveal Header for Results
@@ -46,7 +50,7 @@ function watchSubmit(){
 function getCollegesApi(searchTerm){
   const query = {
         "school.name": `${searchTerm}`,
-        _fields: "school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,school.school_url,school.city,school.state,school.zip",
+        _fields: "school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,school.school_url,latest.student.size,latest.student.demographics.non_resident_aliens_2000,latest.student.demographics.race_ethnicity.white,latest.student.demographics.race_ethnicity.black,latest.student.demographics.race_ethnicity.hispanic,latest.student.demographics.race_ethnicity.asian",
         api_key: "8P336smWdRHaUwK6gjNbmGzeaoRDEqyIt16jEInQ",
         _per_page: "100"
   }
@@ -61,6 +65,12 @@ function loadColleges(data){
       let college_tuition_in_state = data.results[`${i}`][`latest.cost.tuition.in_state`];
       let college_url = data.results[`${i}`][`school.school_url`];
       let college_name = data.results[`${i}`][`school.name`];
+      let population = data.results[`${i}`][`latest.student.size`];
+      let aliens = data.results[`${i}`][`latest.student.demographics.non_resident_aliens_2000`]
+      let white = data.results[`${i}`][`latest.student.demographics.race_ethnicity.white`]
+      let black = data.results[`${i}`][`latest.student.demographics.race_ethnicity.black`]
+      let hispanic = data.results[`${i}`][`latest.student.demographics.race_ethnicity.hispanic`]
+      let asian = data.results[`${i}`][`latest.student.demographics.race_ethnicity.asian`]
       
 
     //Compare in state tuition and out of state tuition to see if returns null --> want to omit results that have no data
@@ -75,27 +85,39 @@ function loadColleges(data){
       }
       else{
         $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder'); 
-
       }
 
       //Event Listener for apending CHOSEN school information
       $(`.result_school_name${i}`).on('click', function(){
         $('.chosen-result').removeClass('hidden');
         $('.js-youtube-holder').removeClass('hidden');
+        $('.js-pop-info').removeClass('hidden');
+        $('.js-poprace-info').removeClass('hidden');
         $(`.chosen-result`).addClass('fade-in').html('').append(
           `<h2>${college_name}<p>See more at - <a href="http://${college_url}" target="_blank">${college_url}</a></p></h2>
-           
-           <div>
-              <p>Tuition in USD</p>
-              <p> $${Math.trunc(college_tuition_out_state).toLocaleString()}</p>
-           </div>
-           
-           <span><img src="fast_Forward.png" alt="right-arrow"></span>
-           
+             
            <div>
               <p>Tuition in ${globalCurrencyId}</p>
-              <p>${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()} </p>
+              <p>${globalSymbol} ${Math.trunc(globalRate * college_tuition_out_state).toLocaleString()}</p><br>
+              <p>About $${Math.trunc(college_tuition_out_state).toLocaleString()} USD</p>
+
            </div></br>`)
+           
+           $(`.js-pop-info`).addClass('fade-in').html('').append(
+            `<h2>Degree-Seeking Student Population<h2>
+                <h3>${(population).toLocaleString()}</h3>
+             <h2>Percentage of Foreign Students</h2>
+                <h3>${(aliens * 100).toFixed(2)}%</h3>
+             </div></br>`)
+
+          $(`.js-poprace-info`).addClass('fade-in').html('').append(
+               `<h2> Racial Demographics (Population) <h2>
+                  <h3>White Students<br> ${(white * 100).toFixed(2)}%</h2>
+                  <h3>Black Students<br> ${(black * 100).toFixed(2)}%</h2>
+                  <h3>Hispanic Students<br> ${(hispanic * 100).toFixed(2)}%</h2>
+                  <h3>Asian Students<br> ${(asian * 100).toFixed(2)}%</h2>
+               </div></br>`)
+        
            window.scrollTo(0,0);
            $('.js-youtube-holder').addClass('fade-in').html('');
            getDataFromYoutubeApi(`${college_name}`, displayYoutubeSearchData); 
@@ -115,7 +137,7 @@ function loadColleges(data){
 //___________________________________________________________________________
 // CURRENCY CONVERTER STARTS HERE - Takes in country, matches currency, converts tuition
 
-let countryIdArray = [];
+const countryIdArray = [];
 const currencyIdArray = [];
 const symbolArray = [];
 let globalRate = undefined;
@@ -133,17 +155,17 @@ function loadCountries(data){
   const results = data.results;
   console.log(results);
   for(let countryCode in results){
-    // $('#country-choices').append(`<option value="${results[countryCode].name}"> ${results[countryCode].name} </option>`);
+    $('#country-choices').append(`<option value="${results[countryCode].name}"> ${results[countryCode].name} </option>`);
     countryIdArray.push(results[countryCode].name);
     currencyIdArray.push(results[countryCode].currencyId);
     symbolArray.push(results[countryCode].currencySymbol);
   } 
-    countryIdArray = countryIdArray.sort();
-    console.log(countryIdArray);
+    // let listCountryIdArray = countryIdArray.sort();
+    // console.log(countryIdArray);
   
-  for(let i=0; i<countryIdArray.length; i++){
-    $('#country-choices').append(`<option value="${countryIdArray[i]}"> ${countryIdArray[i]} </option>`);
-  } //Also changed const to let for countryIdArray
+  // for(let i=0; i<countryIdArray.length; i++){
+  //   $('#country-choices').append(`<option value="${listCountryIdArray[i]}"> ${listCountryIdArray[i]} </option>`);
+  // } //Also changed const to let for countryIdArray
 
     watchSubmitCountry(data);
 }
@@ -213,12 +235,12 @@ function renderResult(item) {
   return `
     <div class="result-container">
         <div class="pic-container">
-            <p> <a href = "https://www.youtube.com/watch?v=${item.id.videoId}"><img src= "${item.snippet.thumbnails.medium.url}" alt="thumbnail"></a> </p>
+            <p> <a href = "https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank" alt="youtube-video"><img src= "${item.snippet.thumbnails.medium.url}" alt="thumbnail"></a> </p>
         </div>
         <div class="description-container">
-            <p class="result-title"><a href = "https://www.youtube.com/watch?v=${item.id.videoId}"> ${item.snippet.title}</a> </p>
+            <p class="result-title"><a href = "https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank" alt="youtube-video" > ${item.snippet.title}</a> </p>
             <p class="result-description"> ${item.snippet.description} </p>
-            <p> Looking for more? Check out this <a href = "https://www.youtube.com/channel/${item.snippet.channelId}">channel</a> 
+            <p> Looking for more? Check out this <a href = "https://www.youtube.com/channel/${item.snippet.channelId}" target="_blank" alt="youtube-video">channel</a> 
         </div>
     </div>`
 }
