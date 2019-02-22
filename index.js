@@ -128,18 +128,28 @@ let globalCountry = undefined;
 //Calls for data from country api and loads them for appending
 function getCountryApi(){
   const Url="https://free.currencyconverterapi.com/api/v6/countries"
-  const query = {}
+  const query = {apiKey: "0e88cf8b58cce8accbae"}
   $.getJSON(Url, query, loadCountries);
 }
 
 function loadCountries(data){
   const results = data.results;
+  console.log("This is results:" + results);
   for(let countryCode in results){
-    $('#country-choices').append(`<option value="${results[countryCode].name}"> ${results[countryCode].name} </option>`);
     countryIdArray.push(results[countryCode].name);
     currencyIdArray.push(results[countryCode].currencyId);
     symbolArray.push(results[countryCode].currencySymbol);
-  } 
+  }
+
+  //We clone our countryIdArrayClone so that index order between country, currency, symbol is unchanged when sorted alphabetically
+  //Sort to get countries in alphabetical order before appending to our drop down choices
+  let countryIdArrayClone = countryIdArray.slice(0, countryIdArray.length).sort();
+
+  //Display drop down menu of countries
+  for(let i=0; i<countryIdArray.length; i++){
+    $('#country-choices').append(`<option value="${countryIdArrayClone[i]}"> ${countryIdArrayClone[i]} </option>`);
+  }
+ 
     watchSubmitCountry(data);
 }
 
@@ -171,7 +181,8 @@ function getConverterApi(currencyIdValue){
     const Url="https://free.currencyconverterapi.com/api/v6/convert"
     const query = {
       q: `USD_${currencyIdValue}`,
-      compact:"ultra"
+      compact:"ultra",
+      apiKey: "0e88cf8b58cce8accbae"
     }
      $.getJSON(Url, query, testConversion);
 
