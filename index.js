@@ -28,7 +28,10 @@ function watchSubmit(){
     
     //Sets up Results Holder
     $('.js-results-holder').addClass('fade-in').css("background-color", "peachpuff").html('').append(
-          `<h2>Select a college to view tuition in currency of ${globalCountry}</h2>`)  
+          // `<h2>Select a college to view tuition in currency of ${globalCountry}</h2>`
+          `<h2>Select a college </h2>`
+
+        )  
     
     //Coordinates Orange Check Mark for Search Forms
     $('.orange-check-country').html('');
@@ -74,6 +77,8 @@ function loadColleges(data){
       else{
         $(`<a href="#top"><h3 class="result_school_name result_school_name${i}"> ${college_name}</h3></a>`).appendTo('.js-results-holder'); 
       }
+    
+    //Omit results if statistics are missing
 
       //Event Listener for apending CHOSEN school information
       $(`.result_school_name${i}`).on('click', function(){
@@ -159,6 +164,7 @@ function watchSubmitCountry(){
     event.preventDefault();
     const userSubmission =  $(`#country-choices`).val();
     globalCountry = userSubmission;
+    alert(`Your country has been set to ${globalCountry}, now search for schools`);
     $('#country-choices').val('');
     
 //Matches country choice to currency    
