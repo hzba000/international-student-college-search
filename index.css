@@ -5,16 +5,22 @@
     font-family: 'Fira Sans', sans-serif;
 }
 
- body{
-    background-image:url(background_bottom.gif);
-    background-position: bottom;
-    background-repeat: repeat-x;
-    background-attachment: fixed; 
+select{
+    width:300px;
+}
+
+body{
+    background-color: lightyellow;
 }
 
 header{
     text-align:center;
 }
+
+/* .search-field-holder{
+    margin-left:auto;
+    margin-right:auto;
+} */
 
 .flex-container{
     display:flex;
@@ -28,7 +34,7 @@ header{
 }
 
 #js-search-box{
-    width:338px;
+    width:300px;
     margin-bottom: 10px;
 }
 
