@@ -27,7 +27,7 @@ function watchSubmit(){
     getCollegesApi(userSubmission);
     
     //Sets up Results Holder
-    $('.js-results-holder').addClass('fade-in').css("background-color", "whitesmoke").html('').append(
+    $('.js-results-holder').addClass('fade-in').css("background-color", "goldenrod").html('').append(
           // `<h2>Select a college to view tuition in currency of ${globalCountry}</h2>`
           `<h2>Select a college </h2>`
 
