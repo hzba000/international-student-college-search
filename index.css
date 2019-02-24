@@ -14,6 +14,10 @@ a:link{
     text-decoration:none;
 }
 
+.js-results-holder a:visited{
+    color:white;
+}
+
 a:visited{
     color: goldenrod;
 }
@@ -425,100 +429,6 @@ button{
 
 /*Media Queries*/
 
-@media only screen and (max-width:1025px){
 
-    .js-pop-info{
-        margin-bottom:0px;
-        height: 100%;
-        background-color: midnightblue;
-        color:white;
-        position: static;
-        text-align: center;
-        left: 750px;
-        bottom: 100px;
-        margin-top:80px;
-        width: auto;
-        margin:10px;
-    }
 
-    
-
-    .js-poprace-info{
-        margin-bottom:0px;
-        height: 100%;
-        background-color: midnightblue;
-        color: white;
-        position: static;
-        text-align: center;
-        left: 750px;
-        bottom: 100px;
-        margin-top:80px;
-        width: auto;
-        margin:10px;
-    }
-
-    .chosen-result p{
-        font-size: 23px;
-        font-weight:bold;
-
-    }
-    .chosen-result{
-        margin-bottom:0px;
-        height: 100%;
-        background-color: midnightblue;
-        color:white;
-        position: static;
-        text-align: center;
-        left: 750px;
-        bottom: 100px;
-        margin-top:80px;
-        width: auto;
-        margin:10px;
-    }
-
-    fieldset{
-        left: 0px;
-    }
-
-    .flex-container{
-        display:flex;
-        /* flex-direction:column; */
-        padding:5px;
-    }
-/* 
-    .flex-container-inner{
-        max-width: 720px;
-    } */
-
-    .js-youtube-holder img{
-        width:250px;
-    }
-
-    .js-youtube-holder{
-        height: 100%;
-        width: auto;
-        background-color: midnightblue;
-        color:white;
-        position: static;
-        text-align: center;
-        left: 750px;
-        bottom: 100px;
-        margin-top:80px;
-        margin-bottom:30px;
-        margin:10px;
-        flex:1
-    }
-
-    .js-results-holder{
-        margin:20px;
-    }
-
-    .chosen-result{
-        flex:1;
-    }
-
-    #js-search-form{
-        margin-bottom: 50px;
-    }
-}
 
