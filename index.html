@@ -1,66 +1,35 @@
 <!DOCTYPE HTML>
-<!--Note: Sometimes countries are slow to load from API(not often), give it a sec to populate search form-->
 <HTML lang="en">  
     
     <HEAD>  
         <title> College Tuition Currency Converter</title>
-        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="landingpage.css">
         <meta name="viewport" content="width=device-width">
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Permanent+Marker|Rubik" rel="stylesheet">
     </HEAD>
     
     <BODY>
-        <header role="banner" aria-live="polite">
-                <h1 id="top">International Student College Search</h1> 
-                <div class="search-field-holder">
-                        <div class="search-container fade-in">
-                            <form class="country-question-form">
-                                <fieldset>
-                                    <legend> Step 1: Set your home country </legend>
-                                    <label class="country-question-label" for="country-choices"></label>
-                                    <select name="country-choices" id="country-choices" required onchange="watchCountrySubmit">
-                                    <option value="" disabled selected>Select your country</option>
-                                    </select>
-                                    <span><button class="submit-button"> Set </button></span>
-                                    <!-- <span class="orange-check-country"> </span> -->
-                                </fieldset>    
-                            </form>
-                    
-                        <div class="school-search-container hidden">
-                            <form id="js-search-form">
-                                <fieldset>
-                                    <legend>Step 2: Search for US schools</legend>
-                                    <label for="js-search-box"></label>
-                                    <input type="text" name="js-search-box" id="js-search-box" placeholder="Search..." required>
-                                    <button type="submit" class="submit-school-button">Submit</button>
-                                    <!-- <span class="orange-check-school"> </span> -->
-                                </fieldset>
-                            </form>
-                        </div>
+            <header role="banner" aria-live="polite">
+                    <img class="landing-image"src="./images/study_computer_globe_blank.png" alt="notebook-logo" />
+                    <hr />
+                    <div class="landing-explanation">
+                        <h1> International Student College Search</h1>
+                        <p>This is a tool for students around the world who are interested in attending college in the USA.</p>
+                        <p>You can view tuition in your native currency, get relevant statistics and view informational videos</p>
                     </div>
-                <!-- <div class="instructions"> 
-                    <h3>Choose your country</h3>
-                    <h3>Search and Select a US College</h3>
-                    <h3>See yearly tuition in currency of chosen country</h3>
-                </div> -->
-        </header>
+            </header>
+                
+                <br />
+            
+            <main role="main" aria-live="polite">
+                    <div class= "buttonHolder">
+                        <button class="button4" onclick="location.href =' ./main.html'"> Get Started! </button>
+                        <!-- <a href="something" class="button4">Button 7</a> -->
 
-        <main role="main" aria-live="polite">
-            
-            
-            <div class="flex-container">
-                <div class="flex-container-inner">
-                    <div class="chosen-result hidden" aria-live="assertive"></div>
-                    <div class="js-youtube-holder hidden" aria-live="assertive"></div>
-                    <div class="js-pop-info hidden"></div>
-                    <div class="js-poprace-info hidden"></div>
-                </div>
-                <div class="js-results-holder hidden" aria-live="polite"></div>
-            </div>
-            
-            </div>
-        </main>    
-
+                        <!-- <Link to="/signup"><button class="get-result-button"> Sign up</button></Link><br/>
+                        <Link to="/login"><button class="get-result-button">Login</button></Link> -->
+                    </div>
+            </main>
         <!--Javascript Links-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="index.js"></script>

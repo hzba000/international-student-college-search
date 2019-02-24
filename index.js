@@ -27,7 +27,7 @@ function watchSubmit(){
     getCollegesApi(userSubmission);
     
     //Sets up Results Holder
-    $('.js-results-holder').addClass('fade-in').css("background-color", "peachpuff").html('').append(
+    $('.js-results-holder').addClass('fade-in').css("background-color", "whitesmoke").html('').append(
           // `<h2>Select a college to view tuition in currency of ${globalCountry}</h2>`
           `<h2>Select a college </h2>`
 
@@ -223,7 +223,6 @@ function renderResult(item) {
         </div>
         <div class="description-container">
             <p class="result-title"><a href = "https://www.youtube.com/watch?v=${item.id.videoId}" target="_blank" alt="youtube-video" > ${item.snippet.title}</a> </p>
-            <p class="result-description"> ${item.snippet.description} </p>
             <p> Looking for more? Check out this <a href = "https://www.youtube.com/channel/${item.snippet.channelId}" target="_blank" alt="youtube-video">channel</a> 
         </div>
     </div>`
