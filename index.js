@@ -139,7 +139,6 @@ function getCountryApi(){
 
 function loadCountries(data){
   const results = data.results;
-  console.log("This is results:" + results);
   for(let countryCode in results){
     countryIdArray.push(results[countryCode].name);
     currencyIdArray.push(results[countryCode].currencyId);
