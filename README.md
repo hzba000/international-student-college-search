@@ -1,7 +1,7 @@
 # College Tuition Currency Converter App
 
 **Github Live Page**<br>
-https://hzba000.github.io/college_tuition_currency_converter_test/
+https://hzba000.github.io/international-student-college-search/
 
 **Summary**<br>
 
