@@ -28,13 +28,13 @@ https://hzba000.github.io/international-student-college-search/
  
  **Screenshots**<br>
  <p> Landing page: </p>
- <img src="https://github.com/hzba000/international-student-college-search/master/screenshots/landing.png">
+ <img src="https://github.com/hzba000/international-student-college-search/tree/master/screenshots/landing.png">
  
  <p> Select a country: </p>
- <img src="https://github.com/hzba000/international-student-college-search/master/screenshots/select_country.png">
+ <img src="https://github.com/hzba000/international-student-college-search/tree/master/screenshots/select_country.png">
  
  <p> Search and select a school: </p>
- <img src="https://github.com/hzba000/international-student-college-search/master/screenshots/search_schools.png">
+ <img src="https://github.com/hzba000/international-student-college-search/tree/master/screenshots/search_schools.png">
  
  <p> View chosen school’s tuition in currency of chosen country: </p>
- <img src="https://github.com/hzba000/international-student-college-search/master/screenshots/school_information.png">
+ <img src="https://github.com/hzba000/international-student-college-search/tree/master/screenshots/school_information.png">
