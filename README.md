@@ -6,16 +6,12 @@ https://hzba000.github.io/international-student-college-search/
 **Summary**<br>
 
 <div>
-  This app allows users to search for yearly US college tuition in the currencies of different countries.<br>  
-  The user chooses a country, searches for a school and makes their selection.<br> 
-  The app finds the tuition of that school, and converts it into the currency of the user’s chosen country.
-  It also provides some other useful information for foreign students looking to attend college in the US.
+  This is a tool for students around the world who are interested in attending college in the USA. It allows them to research US schools with information relevant for international students.
 </div><br>
 
 **Intended Audience**<br>
 <div>
-   This app is intended for people living outside the United States that want to attend college in the US. They can view the tuition of 
-   colleges that interest them in their native currency.
+   This app is intended for people living outside the United States that want to attend college in the US. They can view tuition in their native currency, get relevant statistics and watch informational videos.
 </div><br>
 
 **Technology Used**<br>
@@ -36,5 +32,5 @@ https://hzba000.github.io/international-student-college-search/
  <p> Search and select a school: </p>
  <img src="https://github.com/hzba000/international-student-college-search/blob/master/screenshots/search_schools.png">
  
- <p> View chosen school’s tuition in currency of chosen country: </p>
+ <p> View chosen school’s information: </p>
  <img src="https://github.com/hzba000/international-student-college-search/blob/master/screenshots/school_information.png">
