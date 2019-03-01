@@ -28,13 +28,13 @@ https://hzba000.github.io/international-student-college-search/
  
  **Screenshots**<br>
  <p> Landing page: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/landing_page.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots/landing.png">
  
  <p> Select a country: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/choose_country.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots/select_country.png">
  
  <p> Search and select a school: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/search_select_school.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots/search_schools.png">
  
  <p> View chosen school’s tuition in currency of chosen country: </p>
- <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots_2/see_results.png">
+ <img src="https://github.com/hzba000/college_tuition_currency_converter_test/blob/alanna_check_920/screenshots/school_information.png">
