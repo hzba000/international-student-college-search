@@ -53,7 +53,7 @@ header{
   }
 }
 
-.button4{
+.landing-button{
   background-color:darkblue;
   display:inline-block;
   padding:0.3em 1.2em;
@@ -69,13 +69,13 @@ header{
   width: 175px;
 }
 
-.button4:hover{
+.landing-button:hover{
   background-color: crimson;
   cursor:pointer;}
 
   @media all and (max-width:30em){
    
-    .button4{
+    .landing-button{
       display:block;
       margin:0.2em auto;}
 
