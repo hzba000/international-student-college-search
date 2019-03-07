@@ -1,4 +1,4 @@
-# College Tuition Currency Converter App
+# International Student College Search
 
 **Github Live Page**<br>
 https://hzba000.github.io/international-student-college-search/
